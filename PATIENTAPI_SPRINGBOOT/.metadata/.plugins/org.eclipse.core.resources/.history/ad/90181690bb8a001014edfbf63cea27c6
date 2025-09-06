@@ -1,0 +1,5 @@
+package com.klu.in.repository;
+
+public interface PatientRepository {
+
+}

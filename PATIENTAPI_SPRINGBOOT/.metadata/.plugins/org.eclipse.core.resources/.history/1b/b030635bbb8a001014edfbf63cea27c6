@@ -1,0 +1,5 @@
+package com.klu.in.model;
+
+public class Patient {
+
+}
