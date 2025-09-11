@@ -1,5 +1,5 @@
 const config = {
-    url: "http://localhost:2030/patientapi"
+    url: "http://localhost:2030/patientapiprac/patientapi"
 }
 
 export default config;
