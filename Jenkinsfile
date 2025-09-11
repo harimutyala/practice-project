@@ -27,13 +27,13 @@ pipeline {
         }
 
         // ===== BACKEND BUILD =====
-        stage('Build Backend') {
-            steps {
-                dir('PATIENTAPI_SPRINGBOOT') {
-                    bat 'mvn clean package'
-                }
-            }
+       stage('Build Backend') {
+    steps {
+        dir('PATIENTAPI_SPRINGBOOT/patientapi-springboot') {
+            bat 'mvn clean package'
         }
+    }
+}
 
         // ===== BACKEND DEPLOY =====
         stage('Deploy Backend to Tomcat') {
