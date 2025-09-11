@@ -27,13 +27,13 @@ pipeline {
         }
 
         // ===== BACKEND BUILD =====
-       stage('Build Backend') {
-    steps {
-        dir('PATIENTAPI_SPRINGBOOT/PATIENTAPI_SPRINGBOOT') {
-            bat 'mvn clean package'
+        stage('Build Backend') {
+            steps {
+                dir('PATIENTAPI_SPRINGBOOT') {
+                    bat 'mvn clean package'
+                }
+            }
         }
-    }
-}
 
         // ===== BACKEND DEPLOY =====
         stage('Deploy Backend to Tomcat') {
@@ -45,7 +45,7 @@ pipeline {
                 if exist "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\patientapiprac" (
                     rmdir /S /Q "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\patientapiprac"
                 )
-                copy "PATIENTAPI_SPRINGBOOT\\PATIENTAPI_SPRINGBOOT\\target\\*.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\"
+                copy "PATIENTAPI_SPRINGBOOT\\target\\*.war" "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\webapps\\"
                 '''
             }
         }
