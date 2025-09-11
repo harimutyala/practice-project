@@ -29,7 +29,7 @@ pipeline {
         // ===== BACKEND BUILD =====
        stage('Build Backend') {
     steps {
-        dir('PATIENTAPI_SPRINGBOOT/patientapi-springboot') {
+        dir('PATIENTAPI_SPRINGBOOT/PATIENTAPI_SPRINGBOOT') {
             bat 'mvn clean package'
         }
     }
