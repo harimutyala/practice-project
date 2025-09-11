@@ -6,7 +6,7 @@ pipeline {
         // ===== FRONTEND BUILD =====
         stage('Build Frontend') {
             steps {
-                dir('PATIENTAPI_REACT') {
+                dir('PATIENTAPI_REACT/patientapi') {
                     bat 'npm install'
                     bat 'npm run build'
                 }
