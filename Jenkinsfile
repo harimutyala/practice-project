@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    tools {
+        // Ensure Maven is available (configured in Jenkins -> Global Tool Configuration)
+        maven 'Maven-3.9.9' 
+    }
+
     stages {
 
         // ===== FRONTEND BUILD =====
@@ -27,13 +32,15 @@ pipeline {
         }
 
         // ===== BACKEND BUILD =====
-       stage('Build Backend') {
-    steps {
-        dir('PATIENTAPI_SPRINGBOOT/PATIENTAPI_SPRINGBOOT') {
-            bat 'mvn clean package'
+        stage('Build Backend') {
+            steps {
+                dir('PATIENTAPI_SPRINGBOOT/PATIENTAPI_SPRINGBOOT') {
+                    withMaven(maven: 'Maven-3.9.9') {
+                        bat 'mvn clean package'
+                    }
+                }
+            }
         }
-    }
-}
 
         // ===== BACKEND DEPLOY =====
         stage('Deploy Backend to Tomcat') {
@@ -49,15 +56,14 @@ pipeline {
                 '''
             }
         }
-
     }
 
     post {
         success {
-            echo 'Deployment Successful!'
+            echo '✅ Deployment Successful!'
         }
         failure {
-            echo 'Pipeline Failed.'
+            echo '❌ Pipeline Failed.'
         }
     }
 }
