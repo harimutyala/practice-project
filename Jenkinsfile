@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // Ensure Maven is available (configured in Jenkins -> Global Tool Configuration)
-        maven 'Maven-3.9.9' 
+        maven 'Maven-3.9.11' 
     }
 
     stages {
