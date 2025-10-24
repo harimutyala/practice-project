@@ -35,7 +35,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 dir('PATIENTAPI_SPRINGBOOT/PATIENTAPI_SPRINGBOOT') {
-                    withMaven(maven: 'Maven-3.9.9') {
+                    withMaven(maven: 'Maven-3.9.11') {
                         bat 'mvn clean package'
                     }
                 }
